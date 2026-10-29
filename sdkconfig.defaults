@@ -1,0 +1,20 @@
+# 本文件入库；sdkconfig 不入库（见 .gitignore）。
+# 克隆后：idf.py set-target esp32 && idf.py build
+# 这里的项会作为默认值生成 sdkconfig，保证别人拿到的配置和本机一致。
+
+# 目标芯片：ESP32（WROOM-32D，双核，无 PSRAM）
+CONFIG_IDF_TARGET="esp32"
+
+# 模组 flash 为 2MB
+CONFIG_ESPTOOLPY_FLASHSIZE_2MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="2MB"
+
+# 分区表用单 app：当前固件约 180KB，默认 1MB 的 app 分区绰绰有余
+CONFIG_PARTITION_TABLE_SINGLE_APP=y
+
+# FreeRTOS tick = 100Hz。守卫状态机以 100ms 为节拍做去抖与滞回计数，
+# tick 再细对本项目没有收益，只会增加调度开销
+CONFIG_FREERTOS_HZ=100
+
+# app_main 栈大小（启动阶段要打印较多字符串，默认值够用）
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=3584

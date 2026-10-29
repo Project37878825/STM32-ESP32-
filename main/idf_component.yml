@@ -1,0 +1,6 @@
+## esp-mqtt 与 cJSON 在 IDF v6.1 都已不再是内置组件，需从 ESP 组件仓库拉取。
+## 首次编译会自动下载，需要联网。
+## 声明在这里的依赖会被构建系统自动加入本组件的依赖，无需再写进 CMakeLists 的 REQUIRES。
+dependencies:
+  espressif/mqtt: "*"
+  espressif/cjson: "*"
